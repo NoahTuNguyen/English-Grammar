@@ -217,7 +217,7 @@ h1, h2, h3 { font-family: var(--font-ui); margin: 0; line-height: 1.1; }
 /* Pack cards. */
 .pack-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 16px;
 }
 .pack-card-wrap { position: relative; }
@@ -443,7 +443,7 @@ mark.hl { background: var(--hl-bg); color: var(--hl-fg); border-radius: 6px; pad
   border-radius: 18px;
 }
 .tl-station.t-now { box-shadow: none; }
-.tl-head { display: flex; align-items: center; gap: 8px; min-height: 48px; }
+.tl-head { display: flex; align-items: center; gap: 8px; min-height: var(--tap); }
 .tl-head .station-icon { font-size: 34px; }
 .clues { display: flex; flex-wrap: wrap; gap: 8px; }
 .clue-chip {
@@ -571,7 +571,7 @@ mark.glow { animation: glow 1s ease 2; }
 .opt.t-later  { background: var(--later-bg);  color: var(--later-fg);  border: 3px dashed var(--later-fg); }
 .opt.correct { background: var(--later-bg); color: var(--later-fg); border: 3px solid var(--later-fg); filter: none; opacity: 1; animation: pop .4s ease; }
 .opt.faded { opacity: .3; box-shadow: none; }
-.opt-say { width: 48px; height: var(--tap); border-radius: 16px; font-size: 22px; color: var(--muted); }
+.opt-say { width: var(--tap); height: var(--tap); border-radius: 16px; font-size: 22px; color: var(--muted); }
 .no-speech .opt-say { display: none; }
 
 /* Wobble for a slip. Never red. */
@@ -790,4 +790,6 @@ mark.glow { animation: glow 1s ease 2; }
     transition-duration: .001ms !important;
   }
   .grownups-btn.holding .hold-ring { transition-duration: 2s !important; }
+  /* The star still shows (it's the reward), it just doesn't move. */
+  .star-pop { animation: none !important; transform: translate(-50%, 0); }
 }
