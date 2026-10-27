@@ -1,0 +1,128 @@
+{
+  "id": "p1",
+  "title": "Simple Past, Be and Have",
+  "pic": "🎒",
+  "objectives": [
+    {"id": "p1-o1", "text": "Change action words from now to before"},
+    {"id": "p1-o2", "text": "Spell -ed words the right way"},
+    {"id": "p1-o3", "text": "Remember the special past words"},
+    {"id": "p1-o4", "text": "Use time clues: yesterday, last week, just now"},
+    {"id": "p1-o5", "text": "Choose am, is, are and has, have"}
+  ],
+  "units": [
+    {
+      "id": "p1-be-now", "title": "am, is, are", "pic": "🙋", "rule": "be-now", "objectives": ["p1-o5"],
+      "items": [
+        {"id": "p1-be-01", "type": "pick", "pic": "😊", "text": "I ___ happy today.", "options": ["am", "is"], "answer": "am", "who": "I", "subject": "I"},
+        {"id": "p1-be-02", "type": "pick", "pic": "🚌", "text": "He ___ a bus driver.", "options": ["is", "are"], "answer": "is", "who": "one", "subject": "He"},
+        {"id": "p1-be-03", "type": "pick", "pic": "👧👦", "text": "My two cousins ___ Lily and Sam.", "options": ["is", "are"], "answer": "are", "who": "many", "subject": "My two cousins"},
+        {"id": "p1-be-04", "type": "pick", "pic": "🏷️", "text": "Her name ___ Rosie.", "options": ["is", "are"], "answer": "is", "who": "one", "subject": "Her name", "hint": "Look: Her name. How many names? Just one!"},
+        {"id": "p1-be-05", "type": "pick", "pic": "🛝", "text": "The children ___ in the playground.", "options": ["is", "are"], "answer": "are", "who": "many", "subject": "The children", "hint": "Look: The children. Children means many!"},
+        {"id": "p1-be-06", "type": "pick", "pic": "🏫", "text": "We ___ in the same class.", "options": ["are", "is"], "answer": "are", "who": "we", "subject": "We"},
+        {"id": "p1-be-07", "type": "pick", "pic": "🐱", "text": "My cat ___ very fluffy.", "options": ["is", "are"], "answer": "is", "who": "one", "subject": "My cat"},
+        {"id": "p1-be-08", "type": "pick", "pic": "🤝", "text": "You ___ my best friend.", "options": ["is", "are"], "answer": "are", "who": "many", "subject": "You", "hint": "Look: You. You always uses are!"},
+        {"id": "p1-be-09", "type": "pick", "pic": "🥭", "text": "The mangoes ___ sweet.", "options": ["is", "are"], "answer": "are", "who": "many", "subject": "The mangoes"},
+        {"id": "p1-be-10", "type": "pick", "pic": "👵", "text": "Grandma ___ in the kitchen.", "options": ["is", "are"], "answer": "is", "who": "one", "subject": "Grandma"}
+      ]
+    },
+    {
+      "id": "p1-have", "title": "has, have", "pic": "🎒", "rule": "have", "objectives": ["p1-o5"],
+      "items": [
+        {"id": "p1-have-01", "type": "pick", "pic": "✏️", "text": "My pencil case ___ two zips.", "options": ["has", "have"], "answer": "has", "who": "one", "subject": "My pencil case"},
+        {"id": "p1-have-02", "type": "pick", "pic": "🎨", "text": "We ___ art class on Friday.", "options": ["has", "have"], "answer": "have", "who": "we", "subject": "We"},
+        {"id": "p1-have-03", "type": "pick", "pic": "🚗", "text": "Our car ___ four doors.", "options": ["has", "have"], "answer": "has", "who": "one", "subject": "Our car"},
+        {"id": "p1-have-04", "type": "pick", "pic": "👟", "text": "The twins ___ the same shoes.", "options": ["has", "have"], "answer": "have", "who": "many", "subject": "The twins"},
+        {"id": "p1-have-05", "type": "pick", "pic": "🐰", "text": "Max ___ a pet rabbit.", "options": ["has", "have"], "answer": "has", "who": "one", "subject": "Max"},
+        {"id": "p1-have-06", "type": "pick", "pic": "🐈", "text": "Cats ___ soft fur.", "options": ["has", "have"], "answer": "have", "who": "many", "subject": "Cats"},
+        {"id": "p1-have-07", "type": "pick", "pic": "📚", "text": "I ___ a new storybook.", "options": ["has", "have"], "answer": "have", "who": "I", "subject": "I"},
+        {"id": "p1-have-08", "type": "pick", "pic": "🌳", "text": "The tree ___ many leaves.", "options": ["has", "have"], "answer": "has", "who": "one", "subject": "The tree", "hint": "Look: The tree. One tree, even with many leaves!"},
+        {"id": "p1-have-09", "type": "pick", "pic": "🐘", "text": "Elephants ___ long trunks.", "options": ["has", "have"], "answer": "have", "who": "many", "subject": "Elephants"},
+        {"id": "p1-have-10", "type": "pick", "pic": "⚽", "text": "My school ___ a big field.", "options": ["has", "have"], "answer": "has", "who": "one", "subject": "My school"}
+      ]
+    },
+    {
+      "id": "p1-be-or-have", "title": "Be or have?", "pic": "🤔", "rule": "be-or-have", "objectives": ["p1-o5"],
+      "items": [
+        {"id": "p1-boh-01", "type": "pick", "pic": "🎂", "text": "Lily ___ six years old.", "options": ["is", "has"], "answer": "is", "who": "one", "subject": "Lily", "hint": "Is this what Lily is, or what Lily owns? It's what she is!"},
+        {"id": "p1-boh-02", "type": "pick", "pic": "🚲", "text": "Lily ___ a red bicycle.", "options": ["is", "has"], "answer": "has", "who": "one", "subject": "Lily", "hint": "Is this what Lily is, or what Lily owns? She owns it!"},
+        {"id": "p1-boh-03", "type": "pick", "pic": "🦆", "text": "The ducks ___ yellow feet.", "options": ["are", "have"], "answer": "have", "who": "many", "subject": "The ducks"},
+        {"id": "p1-boh-04", "type": "pick", "pic": "🦆", "text": "The ducks ___ in the pond.", "options": ["are", "have"], "answer": "are", "who": "many", "subject": "The ducks", "hint": "In the pond tells where the ducks are."},
+        {"id": "p1-boh-05", "type": "pick", "pic": "🍽️", "text": "I ___ hungry.", "options": ["am", "have"], "answer": "am", "who": "I", "subject": "I"},
+        {"id": "p1-boh-06", "type": "pick", "pic": "🥪", "text": "I ___ a sandwich.", "options": ["am", "have"], "answer": "have", "who": "I", "subject": "I"},
+        {"id": "p1-boh-07", "type": "pick", "pic": "💙", "text": "My bottle ___ blue.", "options": ["is", "has"], "answer": "is", "who": "one", "subject": "My bottle"},
+        {"id": "p1-boh-08", "type": "pick", "pic": "✏️", "text": "We ___ three crayons.", "options": ["are", "have"], "answer": "have", "who": "we", "subject": "We"}
+      ]
+    },
+    {
+      "id": "p1-was-were", "title": "was, were", "pic": "🌙", "rule": "be-before", "objectives": ["p1-o1", "p1-o4"],
+      "items": [
+        {"id": "p1-ww-01", "type": "pick", "pic": "😴", "text": "I ___ tired last night.", "options": ["was", "were"], "answer": "was", "who": "I", "subject": "I", "clue": "last night", "time": "before"},
+        {"id": "p1-ww-02", "type": "pick", "pic": "🏪", "text": "The shops ___ closed yesterday.", "options": ["was", "were"], "answer": "were", "who": "many", "subject": "The shops", "clue": "yesterday", "time": "before"},
+        {"id": "p1-ww-03", "type": "pick", "pic": "👩‍🏫", "text": "My teacher ___ happy just now.", "options": ["was", "were"], "answer": "was", "who": "one", "subject": "My teacher", "clue": "just now", "time": "before"},
+        {"id": "p1-ww-04", "type": "pick", "pic": "🦁", "text": "We ___ at the zoo last week.", "options": ["was", "were"], "answer": "were", "who": "we", "subject": "We", "clue": "last week", "time": "before"},
+        {"id": "p1-ww-05", "type": "pick", "pic": "🌧️", "text": "It ___ rainy yesterday.", "options": ["was", "were"], "answer": "was", "who": "one", "subject": "It", "clue": "yesterday", "time": "before"},
+        {"id": "p1-ww-06", "type": "pick", "pic": "👫", "text": "Tom and Mei ___ late just now.", "options": ["was", "were"], "answer": "were", "who": "many", "subject": "Tom and Mei", "clue": "just now", "time": "before", "hint": "Look: Tom and Mei. Two people means many!"}
+      ]
+    },
+    {
+      "id": "p1-past-regular", "title": "Add -ed", "pic": "🚶", "rule": "past-regular", "objectives": ["p1-o1", "p1-o2"],
+      "items": [
+        {"id": "p1-reg-01", "type": "spell", "pic": "🚶", "base": "walk", "answer": "walked", "pattern": "add-ed"},
+        {"id": "p1-reg-02", "type": "spell", "pic": "🐸", "base": "jump", "answer": "jumped", "pattern": "add-ed"},
+        {"id": "p1-reg-03", "type": "spell", "pic": "🎂", "base": "bake", "answer": "baked", "pattern": "add-d"},
+        {"id": "p1-reg-04", "type": "spell", "pic": "😊", "base": "smile", "answer": "smiled", "pattern": "add-d"},
+        {"id": "p1-reg-05", "type": "spell", "pic": "👶", "base": "cry", "answer": "cried", "pattern": "y-ied"},
+        {"id": "p1-reg-06", "type": "spell", "pic": "🧺", "base": "carry", "answer": "carried", "pattern": "y-ied"},
+        {"id": "p1-reg-07", "type": "spell", "pic": "🛑", "base": "stop", "answer": "stopped", "pattern": "double"},
+        {"id": "p1-reg-08", "type": "spell", "pic": "🐇", "base": "hop", "answer": "hopped", "pattern": "double"},
+        {"id": "p1-reg-09", "type": "pick", "pic": "🌈", "text": "We ___ a rainbow last week.", "base": "paint", "options": ["painted", "paintd"], "answer": "painted", "clue": "last week", "time": "before"},
+        {"id": "p1-reg-10", "type": "pick", "pic": "🍪", "text": "Mum ___ cookies yesterday.", "base": "bake", "options": ["baked", "bakeed"], "answer": "baked", "clue": "yesterday", "time": "before", "hint": "bake ends in e. Just add d!"},
+        {"id": "p1-reg-11", "type": "pick", "pic": "👶", "text": "The baby ___ just now.", "base": "cry", "options": ["cried", "cryed"], "answer": "cried", "clue": "just now", "time": "before", "hint": "cry ends in y. Change y to ied!"},
+        {"id": "p1-reg-12", "type": "pick", "pic": "🚗", "text": "Dad ___ the car just now.", "base": "stop", "options": ["stopped", "stoped"], "answer": "stopped", "clue": "just now", "time": "before", "hint": "stop is a short word. Double the p!"}
+      ]
+    },
+    {
+      "id": "p1-past-irregular", "title": "Special words", "pic": "⭐", "rule": "past-irregular", "objectives": ["p1-o1", "p1-o3", "p1-o4"],
+      "items": [
+        {"id": "p1-irr-01", "type": "spell", "pic": "🏃", "base": "go", "answer": "went", "pattern": "irregular"},
+        {"id": "p1-irr-02", "type": "spell", "pic": "🍎", "base": "eat", "answer": "ate", "pattern": "irregular"},
+        {"id": "p1-irr-03", "type": "spell", "pic": "🚌", "base": "take", "answer": "took", "pattern": "irregular"},
+        {"id": "p1-irr-04", "type": "spell", "pic": "🛒", "base": "buy", "answer": "bought", "pattern": "irregular"},
+        {"id": "p1-irr-05", "type": "pick", "pic": "📚", "text": "Yesterday I ___ to the library.", "base": "go", "options": ["went", "goed"], "answer": "went", "clue": "Yesterday", "time": "before"},
+        {"id": "p1-irr-06", "type": "pick", "pic": "🍈", "text": "Grandpa ___ durians last Sunday.", "base": "buy", "options": ["bought", "buyed"], "answer": "bought", "clue": "last Sunday", "time": "before"},
+        {"id": "p1-irr-07", "type": "pick", "pic": "🐶", "text": "The puppy ___ all its food just now.", "base": "eat", "options": ["ate", "eated"], "answer": "ate", "clue": "just now", "time": "before"},
+        {"id": "p1-irr-08", "type": "pick", "pic": "🌈", "text": "We ___ a rainbow yesterday.", "base": "see", "options": ["saw", "seed"], "answer": "saw", "clue": "yesterday", "time": "before"},
+        {"id": "p1-irr-09", "type": "pick", "pic": "🚍", "text": "She ___ the bus to school last week.", "base": "take", "options": ["took", "taked"], "answer": "took", "clue": "last week", "time": "before"},
+        {"id": "p1-irr-10", "type": "pick", "pic": "🏃", "text": "Ben ___ to the gate just now.", "base": "run", "options": ["ran", "runned"], "answer": "ran", "clue": "just now", "time": "before"}
+      ]
+    },
+    {
+      "id": "p1-time-clues", "title": "Now or Before?", "pic": "⏰", "rule": "when", "objectives": ["p1-o4"],
+      "items": [
+        {"id": "p1-when-01", "type": "when", "pic": "🏫", "text": "I walked to school yesterday.", "answer": "before", "clue": "yesterday"},
+        {"id": "p1-when-02", "type": "when", "pic": "😊", "text": "She is happy now.", "answer": "now", "clue": "now"},
+        {"id": "p1-when-03", "type": "when", "pic": "🎡", "text": "We had fun last week.", "answer": "before", "clue": "last week"},
+        {"id": "p1-when-04", "type": "when", "pic": "🍐", "text": "Tom ate a pear just now.", "answer": "before", "clue": "just now"},
+        {"id": "p1-when-05", "type": "when", "pic": "🐶", "text": "My dog has a ball right now.", "answer": "now", "clue": "right now"},
+        {"id": "p1-when-06", "type": "when", "pic": "🥱", "text": "They were sleepy last night.", "answer": "before", "clue": "last night"}
+      ]
+    }
+  ],
+  "together": [
+    {"id": "p1-say-01", "type": "say", "pic": "🎤", "prompt": "Tell me one thing you did yesterday. Start with: Yesterday, I…", "example": "Yesterday, I played with my doll."},
+    {"id": "p1-say-02", "type": "say", "pic": "🎤", "prompt": "Say it aloud: I am. She is. They are.", "example": "I am. She is. They are."},
+    {"id": "p1-say-03", "type": "say", "pic": "🎤", "prompt": "Say it aloud: She has. We have. Birds have.", "example": "She has. We have. Birds have."},
+    {"id": "p1-say-04", "type": "say", "pic": "✍️", "prompt": "Write one sentence using is or has.", "example": "My bag has two pockets."}
+  ],
+  "checkup": [
+    {"id": "p1-chk-01", "unit": "p1-past-irregular", "type": "spell", "pic": "🏃", "base": "go", "answer": "went", "pattern": "irregular"},
+    {"id": "p1-chk-02", "unit": "p1-past-regular", "type": "spell", "pic": "🚶", "base": "walk", "answer": "walked", "pattern": "add-ed"},
+    {"id": "p1-chk-03", "unit": "p1-past-irregular", "type": "pick", "pic": "🪁", "text": "Aunty ___ a kite last Sunday.", "base": "buy", "options": ["bought", "buyed"], "answer": "bought", "clue": "last Sunday", "time": "before"},
+    {"id": "p1-chk-04", "unit": "p1-past-irregular", "type": "pick", "pic": "🐟", "text": "The cat ___ the fish yesterday.", "base": "eat", "options": ["ate", "eated"], "answer": "ate", "clue": "yesterday", "time": "before"},
+    {"id": "p1-chk-05", "unit": "p1-be-now", "type": "pick", "pic": "🎂", "text": "I ___ six years old.", "options": ["am", "is"], "answer": "am", "who": "I", "subject": "I"},
+    {"id": "p1-chk-06", "unit": "p1-be-now", "type": "pick", "pic": "👭", "text": "They ___ cousins.", "options": ["is", "are"], "answer": "are", "who": "many", "subject": "They"},
+    {"id": "p1-chk-07", "unit": "p1-have", "type": "pick", "pic": "🎒", "text": "My bag ___ three pockets.", "options": ["has", "have"], "answer": "has", "who": "one", "subject": "My bag"},
+    {"id": "p1-chk-08", "unit": "p1-was-were", "type": "pick", "pic": "🏖️", "text": "We ___ at the beach last week.", "options": ["was", "were"], "answer": "were", "who": "we", "subject": "We", "clue": "last week", "time": "before"},
+    {"id": "p1-chk-09", "unit": "p1-time-clues", "type": "when", "pic": "🐇", "text": "The rabbit hopped away just now.", "answer": "before", "clue": "just now"}
+  ]
+}

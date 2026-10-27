@@ -1,0 +1,126 @@
+{
+  "be-now": {
+    "type": "who-grid",
+    "title": "am, is, are",
+    "line": "Who is it? Then choose am, is or are.",
+    "rows": [
+      { "time": "now", "cells": {
+        "I":    { "w": "am",  "ex": "I am six years old." },
+        "one":  { "w": "is",  "ex": "She is a nurse." },
+        "we":   { "w": "are", "ex": "We are happy." },
+        "many": { "w": "are", "ex": "They are sisters." } } }
+    ],
+    "sayAloud": "I am. She is. They are."
+  },
+  "be-before": {
+    "type": "who-grid",
+    "title": "was, were",
+    "line": "For Before, am and is become was. Are becomes were.",
+    "rows": [
+      { "time": "now", "cells": {
+        "I": { "w": "am", "ex": "I am tired." }, "one": { "w": "is", "ex": "He is at home." },
+        "we": { "w": "are", "ex": "We are outside." }, "many": { "w": "are", "ex": "They are hungry." } } },
+      { "time": "before", "cells": {
+        "I": { "w": "was", "ex": "I was tired last night." }, "one": { "w": "was", "ex": "He was at home yesterday." },
+        "we": { "w": "were", "ex": "We were outside just now." }, "many": { "w": "were", "ex": "They were hungry a while ago." } } }
+    ],
+    "sayAloud": "I was. He was. We were. They were."
+  },
+  "have": {
+    "type": "who-grid",
+    "title": "has, have",
+    "line": "One person or one thing has. Everyone else have.",
+    "rows": [
+      { "time": "have", "cells": {
+        "I": { "w": "have", "ex": "I have a red ball." }, "one": { "w": "has", "ex": "My bag has four pockets." },
+        "we": { "w": "have", "ex": "We have fun at the beach." }, "many": { "w": "have", "ex": "Birds have beaks." } } }
+    ],
+    "sayAloud": "She has. We have. Birds have."
+  },
+  "be-or-have": {
+    "type": "who-grid",
+    "title": "Be or have?",
+    "line": "Be tells what someone is, or where. Have tells what someone owns.",
+    "rows": [
+      { "time": "now", "cells": {
+        "I": { "w": "am", "ex": "I am hungry." }, "one": { "w": "is", "ex": "Lily is six years old." },
+        "we": { "w": "are", "ex": "We are at school." }, "many": { "w": "are", "ex": "The ducks are in the pond." } } },
+      { "time": "have", "cells": {
+        "I": { "w": "have", "ex": "I have a sandwich." }, "one": { "w": "has", "ex": "Lily has a red bicycle." },
+        "we": { "w": "have", "ex": "We have two pencils." }, "many": { "w": "have", "ex": "The ducks have yellow feet." } } }
+    ],
+    "sayAloud": "I am happy. I have a ball."
+  },
+  "past-regular": {
+    "type": "pattern",
+    "title": "Add -ed",
+    "line": "Most action words add -ed for Before. Some words change a little.",
+    "patterns": [
+      { "id": "add-ed", "rule": "Just add -ed", "from": "walk", "to": "walked", "ex": "We walked to the park yesterday." },
+      { "id": "add-d",  "rule": "Ends in e? Add -d", "from": "bake", "to": "baked", "ex": "Mum baked a cake last week." },
+      { "id": "y-ied",  "rule": "Ends in y? Change y to ied", "from": "cry", "to": "cried", "ex": "The baby cried just now." },
+      { "id": "double", "rule": "Short word? Double the last letter", "from": "stop", "to": "stopped", "ex": "The bus stopped at the gate." }
+    ],
+    "sayAloud": "walk, walked. bake, baked. cry, cried. stop, stopped."
+  },
+  "past-irregular": {
+    "type": "list",
+    "title": "Special words",
+    "line": "These words don't add -ed. They change into a new word.",
+    "pairs": [
+      { "from": "go",   "to": "went",   "ex": "Yesterday I went to the park." },
+      { "from": "eat",  "to": "ate",    "ex": "The dog ate the bone." },
+      { "from": "take", "to": "took",   "ex": "She took the bus to school." },
+      { "from": "buy",  "to": "bought", "ex": "Grandpa bought some durians." },
+      { "from": "see",  "to": "saw",    "ex": "We saw a rainbow." },
+      { "from": "run",  "to": "ran",    "ex": "Ben ran to the gate." },
+      { "from": "sit",  "to": "sat",    "ex": "The cat sat on the mat." },
+      { "from": "have", "to": "had",    "ex": "We had fun at the zoo." }
+    ],
+    "sayAloud": "go, went. eat, ate. take, took. buy, bought."
+  },
+  "ing-now": {
+    "type": "who-grid",
+    "title": "am, is, are + -ing",
+    "line": "Something happening right now: am, is or are, then the action word with -ing.",
+    "rows": [
+      { "time": "now", "cells": {
+        "I": { "w": "am …ing", "ex": "I am reading a book." }, "one": { "w": "is …ing", "ex": "She is cooking now." },
+        "we": { "w": "are …ing", "ex": "We are waiting for the bus." }, "many": { "w": "are …ing", "ex": "They are playing right now." } } }
+    ],
+    "sayAloud": "I am reading. She is cooking. They are playing."
+  },
+  "ing-before": {
+    "type": "who-grid",
+    "title": "was, were + -ing",
+    "line": "Something that was happening before: was or were, then the action word with -ing.",
+    "rows": [
+      { "time": "before", "cells": {
+        "I": { "w": "was …ing", "ex": "I was sleeping when the phone rang." }, "one": { "w": "was …ing", "ex": "Ben was walking just now." },
+        "we": { "w": "were …ing", "ex": "We were having dinner last night." }, "many": { "w": "were …ing", "ex": "The birds were singing this morning." } } }
+    ],
+    "sayAloud": "I was walking. We were eating."
+  },
+  "shall-will": {
+    "type": "who-grid",
+    "title": "shall, will",
+    "line": "School rule: I and we use shall. Everyone else uses will.",
+    "rows": [
+      { "time": "later", "cells": {
+        "I": { "w": "shall", "ex": "I shall see your teacher tomorrow." }, "one": { "w": "will", "ex": "He will buy some oranges." },
+        "we": { "w": "shall", "ex": "We shall take a taxi home." }, "many": { "w": "will", "ex": "The boys will play football later." } } }
+    ],
+    "sayAloud": "I shall. We shall. He will. She will."
+  },
+  "when": {
+    "type": "time-line",
+    "title": "Now, Before or Later?",
+    "line": "Look for the time clue.",
+    "stations": [
+      { "time": "before", "clues": ["yesterday", "just now", "last night", "last week", "a while ago"], "ex": "Ben was walking just now." },
+      { "time": "now",    "clues": ["now", "right now", "look!"], "ex": "She is cooking now." },
+      { "time": "later",  "clues": ["tomorrow", "later", "next week", "soon", "in an hour"], "ex": "The plane will leave in an hour." }
+    ],
+    "sayAloud": "Before. Now. Later."
+  }
+}

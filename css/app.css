@@ -1,0 +1,259 @@
+/* Who & When — styles.
+   Design tokens come from CLAUDE.md. Light is the default; dark mode swaps
+   the same variables. Every screen uses only these variables for colour. */
+
+:root {
+  /* Page */
+  --bg: #FFFBF2;
+  --surface: #FFFFFF;
+  --text: #2C2C2A;
+  --muted: #6B6A64;
+  --line: #E8E3D6;
+  --shadow: 0 2px 0 rgba(60, 50, 20, .08), 0 6px 18px rgba(60, 50, 20, .08);
+
+  /* Meanings */
+  --now-bg: #FAEEDA;    --now-fg: #854F0B;
+  --before-bg: #EEEDFE; --before-fg: #534AB7;
+  --later-bg: #E1F5EE;  --later-fg: #0F6E56;
+  --have-bg: #FBEAF0;   --have-fg: #993556;
+  --hl-bg: #FAC775;     --hl-fg: #412402;
+
+  /* Type */
+  --font-read: 'Andika', system-ui, sans-serif;  /* sentences a child reads */
+  --font-ui: 'Baloo 2', system-ui, sans-serif;   /* headings and buttons */
+  --sentence: 24px;
+  --tap: 56px;
+  --radius: 22px;
+  --gutter: 16px;
+}
+
+@media (min-width: 700px) {
+  :root { --sentence: 30px; --gutter: 24px; }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1F1E1B;
+    --surface: #2B2A26;
+    --text: #F2EFE6;
+    --muted: #B5B2A8;
+    --line: #45423B;
+    --shadow: 0 2px 0 rgba(0, 0, 0, .3), 0 6px 18px rgba(0, 0, 0, .3);
+
+    --now-bg: #633806;    --now-fg: #FAC775;
+    --before-bg: #3C3489; --before-fg: #CECBF6;
+    --later-bg: #085041;  --later-fg: #9FE1CB;
+    --have-bg: #72243E;   --have-fg: #F4C0D1;
+    --hl-bg: #854F0B;     --hl-fg: #FAEEDA;
+  }
+}
+
+/* ---------- Base ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 18px;
+  line-height: 1.35;
+  /* No accidental text selection or iOS callouts while tapping. */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#app {
+  max-width: 980px;
+  margin: 0 auto;
+  padding:
+    max(var(--gutter), env(safe-area-inset-top))
+    max(var(--gutter), env(safe-area-inset-right))
+    max(var(--gutter), env(safe-area-inset-bottom))
+    max(var(--gutter), env(safe-area-inset-left));
+}
+
+button, a { font: inherit; color: inherit; }
+button { border: 0; background: none; padding: 0; cursor: pointer; }
+a { text-decoration: none; }
+:focus-visible { outline: 3px solid var(--before-fg); outline-offset: 3px; }
+
+h1, h2, h3 { font-family: var(--font-ui); margin: 0; line-height: 1.1; }
+
+.sentence { font-family: var(--font-read); font-size: var(--sentence); line-height: 1.3; }
+
+.icon { display: inline-flex; width: 1.2em; height: 1.2em; flex: none; }
+.icon svg { width: 100%; height: 100%; }
+
+.loading { font-size: 64px; text-align: center; margin-top: 30vh; }
+
+.screen { display: flex; flex-direction: column; gap: 20px; }
+.screen.center { align-items: center; text-align: center; padding-top: 10vh; position: relative; }
+.screen.center .back { position: absolute; top: 0; left: 0; }
+.note { color: var(--muted); }
+
+/* ---------- Shared bits ---------- */
+
+/* Round icon button (back, speaker, etc.). */
+.round-btn {
+  display: inline-grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  font-size: 26px;
+  flex: none;
+}
+
+/* Anything tap-to-hear. While it's being read aloud it glows. */
+.sayable { cursor: pointer; }
+.sayable .speaker { width: .8em; height: .8em; margin-left: .3em; opacity: .55; vertical-align: -0.05em; }
+.round-btn.sayable .speaker { width: 1.1em; height: 1.1em; margin: 0; opacity: .8; }
+.speaking { box-shadow: 0 0 0 4px var(--hl-bg) !important; border-radius: 14px; }
+.no-speech .speaker, .no-speech .card-say { display: none !important; }
+
+/* Pressed feel on everything tappable. */
+.station, .pack-card, .round-btn, .mimi, .grownups-btn {
+  transition: transform .12s ease;
+}
+.station:active, .pack-card:active, .round-btn:active, .mimi:active { transform: scale(.96); }
+
+/* Mimi the cat. */
+.mimi { font-size: 44px; line-height: 1; width: var(--tap); height: var(--tap); }
+.mimi.big { font-size: 64px; width: 84px; height: 84px; }
+.mimi.bounce { animation: bounce .5s ease; }
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-14px) rotate(-6deg); }
+  70% { transform: translateY(0) rotate(4deg); }
+}
+
+/* Time cards: Before looks faded (finished), Now bright, Later dashed (not yet). */
+.t-before { background: var(--before-bg); color: var(--before-fg); border: 3px solid transparent; filter: saturate(.6) brightness(1.02); }
+.t-now    { background: var(--now-bg);    color: var(--now-fg);    border: 3px solid var(--now-fg); box-shadow: 0 6px 20px rgba(250, 199, 117, .55); }
+.t-later  { background: var(--later-bg);  color: var(--later-fg);  border: 3px dashed var(--later-fg); }
+.t-have   { background: var(--have-bg);   color: var(--have-fg);   border: 3px solid transparent; }
+
+/* ---------- Home ---------- */
+
+.home-head { display: flex; align-items: center; gap: 12px; }
+.app-title { font-size: clamp(32px, 7vw, 48px); font-weight: 800; flex: 1; }
+
+/* Grown-ups: small corner button, press and hold 2s. */
+.grownups-btn {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  min-width: var(--tap);
+  height: var(--tap);
+  padding: 0 8px;
+  border-radius: 16px;
+  color: var(--muted);
+  font-size: 13px;
+  touch-action: none;
+}
+.grownups-btn .icon { font-size: 22px; }
+.hold-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  border: 3px solid var(--before-fg);
+  clip-path: inset(0 100% 0 0);
+  opacity: 0;
+}
+.grownups-btn.holding .hold-ring { opacity: 1; clip-path: inset(0 0 0 0); transition: clip-path 2s linear; }
+
+/* Timeline strip: Before · Now · Later, left to right, joined by a line. */
+.timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8%; right: 8%; top: 50%;
+  height: 6px;
+  margin-top: -3px;
+  border-radius: 3px;
+  background: var(--line);
+}
+.station {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-height: 150px;
+  padding: 14px 8px;
+  border-radius: var(--radius);
+  text-align: center;
+}
+.station-icon { font-size: 40px; }
+.station-name { font-weight: 800; font-size: 22px; letter-spacing: .02em; }
+.station-ex { font-size: var(--sentence); color: var(--text); }
+
+/* On narrow phones, stack the stations top to bottom so text stays big. */
+@media (max-width: 479px) {
+  .timeline { grid-template-columns: 1fr; gap: 10px; }
+  .timeline::before { left: 46px; right: auto; top: 10%; bottom: 10%; width: 6px; height: auto; margin: 0 0 0 -3px; }
+  .station { flex-direction: row; min-height: 0; padding: 10px 16px; gap: 12px; text-align: left; }
+  .station-name { min-width: 72px; }
+}
+
+/* Pack cards. */
+.pack-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+.pack-card-wrap { position: relative; }
+.pack-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 190px;
+  padding: 20px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 2px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.pack-pic { font-size: 60px; line-height: 1; }
+.pack-title { font-size: 26px; font-weight: 700; line-height: 1.15; padding-right: 50px; }
+.card-say { position: absolute; top: 16px; right: 16px; }
+
+/* Objective circles: empty, half (practising), full (mastered). */
+.obj-dots { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+.obj-dot {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  border: 3px solid var(--later-fg);
+  background: transparent;
+}
+.obj-dot.level-1 { background: linear-gradient(to top, var(--later-fg) 50%, transparent 50%); }
+.obj-dot.level-2 { background: var(--later-fg); }
+
+/* ---------- Motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+  .grownups-btn.holding .hold-ring { transition-duration: 2s !important; }
+}

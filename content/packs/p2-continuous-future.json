@@ -1,0 +1,89 @@
+{
+  "id": "p2",
+  "title": "Continuous and Future",
+  "pic": "🚀",
+  "objectives": [
+    { "id": "p2-o1", "text": "Use am, is, are with -ing words" },
+    { "id": "p2-o2", "text": "Use was, were for actions happening before" },
+    { "id": "p2-o3", "text": "Notice time clues: now, yesterday, just now" },
+    { "id": "p2-o4", "text": "Spot sentences about later" },
+    { "id": "p2-o5", "text": "Use shall and will (school rule)" }
+  ],
+  "units": [
+    {
+      "id": "p2-ing-now", "title": "Happening now", "pic": "☀️", "rule": "ing-now", "objectives": ["p2-o1"],
+      "items": [
+        { "id": "p2-in-01", "type": "pick", "pic": "🎨", "text": "She ___ drawing a cat now.", "options": ["is", "are"], "answer": "is", "who": "one", "subject": "She", "clue": "now", "time": "now" },
+        { "id": "p2-in-02", "type": "pick", "pic": "⚽", "text": "The boys ___ kicking a ball.", "options": ["is", "are"], "answer": "are", "who": "many", "subject": "The boys", "time": "now" },
+        { "id": "p2-in-03", "type": "pick", "pic": "🪥", "text": "I ___ brushing my teeth.", "options": ["am", "is"], "answer": "am", "who": "I", "subject": "I", "time": "now" },
+        { "id": "p2-in-04", "type": "pick", "pic": "👶", "text": "Look! The baby ___ smiling.", "options": ["is", "are"], "answer": "is", "who": "one", "subject": "The baby", "clue": "Look!", "time": "now" },
+        { "id": "p2-in-05", "type": "pick", "pic": "🚏", "text": "We ___ waiting for the bus.", "options": ["are", "am"], "answer": "are", "who": "we", "subject": "We", "time": "now" },
+        { "id": "p2-in-06", "type": "pick", "pic": "🍳", "text": "Mum is ___ dinner right now.", "options": ["cooking", "cook"], "answer": "cooking", "clue": "right now", "time": "now", "hint": "After is, the action word needs -ing!" },
+        { "id": "p2-in-07", "type": "pick", "pic": "🐦", "text": "The birds are ___ in the tree.", "options": ["singing", "sing"], "answer": "singing", "time": "now", "hint": "After are, the action word needs -ing!" },
+        { "id": "p2-in-08", "type": "pick", "pic": "🚗", "text": "Dad ___ washing the car now.", "options": ["is", "are"], "answer": "is", "who": "one", "subject": "Dad", "clue": "now", "time": "now" },
+        { "id": "p2-in-09", "type": "build", "pic": "📖", "text": "I am reading a book." },
+        { "id": "p2-in-10", "type": "build", "pic": "🛝", "text": "We are playing in the park." }
+      ]
+    },
+    {
+      "id": "p2-ing-before", "title": "Happening before", "pic": "🌙", "rule": "ing-before", "objectives": ["p2-o2", "p2-o3"],
+      "items": [
+        { "id": "p2-ib-01", "type": "pick", "pic": "🏊", "text": "Sam ___ swimming just now.", "options": ["was", "were"], "answer": "was", "who": "one", "subject": "Sam", "clue": "just now", "time": "before" },
+        { "id": "p2-ib-02", "type": "pick", "pic": "🪢", "text": "The girls ___ skipping a while ago.", "options": ["was", "were"], "answer": "were", "who": "many", "subject": "The girls", "clue": "a while ago", "time": "before" },
+        { "id": "p2-ib-03", "type": "pick", "pic": "📞", "text": "I ___ sleeping when the phone rang.", "options": ["was", "were"], "answer": "was", "who": "I", "subject": "I", "time": "before" },
+        { "id": "p2-ib-04", "type": "pick", "pic": "📺", "text": "We ___ watching TV last night.", "options": ["was", "were"], "answer": "were", "who": "we", "subject": "We", "clue": "last night", "time": "before" },
+        { "id": "p2-ib-05", "type": "pick", "pic": "😢", "text": "My brother ___ crying just now.", "options": ["was", "were"], "answer": "was", "who": "one", "subject": "My brother", "clue": "just now", "time": "before" },
+        { "id": "p2-ib-06", "type": "pick", "pic": "🐈", "text": "The cats ___ chasing a ball yesterday.", "options": ["was", "were"], "answer": "were", "who": "many", "subject": "The cats", "clue": "yesterday", "time": "before" },
+        { "id": "p2-ib-07", "type": "build", "pic": "😴", "text": "The cat was sleeping." }
+      ]
+    },
+    {
+      "id": "p2-shall-will", "title": "shall, will", "pic": "🌅", "rule": "shall-will", "objectives": ["p2-o4", "p2-o5"],
+      "items": [
+        { "id": "p2-sw-01", "type": "pick", "pic": "👵", "text": "I ___ visit Grandma tomorrow.", "options": ["shall", "will"], "answer": "shall", "who": "I", "subject": "I", "clue": "tomorrow", "time": "later" },
+        { "id": "p2-sw-02", "type": "pick", "pic": "☂️", "text": "She ___ bring her umbrella.", "options": ["shall", "will"], "answer": "will", "who": "one", "subject": "She", "time": "later" },
+        { "id": "p2-sw-03", "type": "pick", "pic": "🖼️", "text": "We ___ paint a picture later.", "options": ["shall", "will"], "answer": "shall", "who": "we", "subject": "We", "clue": "later", "time": "later" },
+        { "id": "p2-sw-04", "type": "pick", "pic": "🚌", "text": "The bus ___ come in five minutes.", "options": ["shall", "will"], "answer": "will", "who": "one", "subject": "The bus", "clue": "in five minutes", "time": "later" },
+        { "id": "p2-sw-05", "type": "pick", "pic": "♟️", "text": "My friends ___ play chess this afternoon.", "options": ["shall", "will"], "answer": "will", "who": "many", "subject": "My friends", "clue": "this afternoon", "time": "later" },
+        { "id": "p2-sw-06", "type": "pick", "pic": "🧹", "text": "I ___ tidy my desk later.", "options": ["shall", "will"], "answer": "shall", "who": "I", "subject": "I", "clue": "later", "time": "later" },
+        { "id": "p2-sw-07", "type": "pick", "pic": "🌳", "text": "___ we go to the park?", "options": ["Shall", "Will"], "answer": "Shall", "who": "we", "subject": "we", "time": "later", "hint": "Who is going? We! We uses shall." },
+        { "id": "p2-sw-08", "type": "pick", "pic": "🙏", "text": "___ you help me, please?", "options": ["Shall", "Will"], "answer": "Will", "who": "many", "subject": "you", "time": "later", "hint": "Who will help? You! You uses will." },
+        { "id": "p2-sw-09", "type": "pick", "pic": "🌧️", "text": "It ___ rain tonight.", "options": ["shall", "will"], "answer": "will", "who": "one", "subject": "It", "clue": "tonight", "time": "later" },
+        { "id": "p2-sw-10", "type": "pick", "pic": "🪟", "text": "___ I open the window?", "options": ["Shall", "Will"], "answer": "Shall", "who": "I", "subject": "I", "time": "later" },
+        { "id": "p2-sw-11", "type": "build", "pic": "🤝", "text": "I shall help you later." }
+      ]
+    },
+    {
+      "id": "p2-when", "title": "Now, Before or Later?", "pic": "⏰", "rule": "when", "objectives": ["p2-o3", "p2-o4"],
+      "items": [
+        { "id": "p2-wh-01", "type": "when", "pic": "📖", "text": "She is reading now.", "answer": "now", "clue": "now" },
+        { "id": "p2-wh-02", "type": "when", "pic": "🐶", "text": "The dog was barking last night.", "answer": "before", "clue": "last night" },
+        { "id": "p2-wh-03", "type": "when", "pic": "🏊", "text": "We shall go swimming tomorrow.", "answer": "later", "clue": "tomorrow" },
+        { "id": "p2-wh-04", "type": "when", "pic": "💃", "text": "They are dancing right now.", "answer": "now", "clue": "right now" },
+        { "id": "p2-wh-05", "type": "when", "pic": "🍜", "text": "Ben was eating just now.", "answer": "before", "clue": "just now" },
+        { "id": "p2-wh-06", "type": "when", "pic": "🚆", "text": "The train will leave later.", "answer": "later", "clue": "later" },
+        { "id": "p2-wh-07", "type": "when", "pic": "👋", "text": "I shall see you next week.", "answer": "later", "clue": "next week" },
+        { "id": "p2-wh-08", "type": "when", "pic": "🍲", "text": "Mum was cooking a while ago.", "answer": "before", "clue": "a while ago" }
+      ]
+    }
+  ],
+  "together": [
+    { "id": "p2-say-01", "type": "say", "pic": "🎤", "prompt": "Action reporter: do something, then tell me what you are doing.", "example": "I am jumping!" },
+    { "id": "p2-say-02", "type": "say", "pic": "🎤", "prompt": "What were you doing just now?", "example": "I was eating my dinner." },
+    { "id": "p2-say-03", "type": "say", "pic": "🌙", "prompt": "Bedtime: tell me two things you shall do tomorrow.", "example": "I shall go to school. I shall play with my friends." },
+    { "id": "p2-say-04", "type": "say", "pic": "🎤", "prompt": "Say it aloud: I shall. We shall. He will. She will.", "example": "I shall. We shall. He will. She will." },
+    { "id": "p2-say-05", "type": "say", "pic": "✍️", "prompt": "Write one sentence about something happening now.", "example": "My brother is watching TV." }
+  ],
+  "checkup": [
+    { "id": "p2-chk-01", "unit": "p2-ing-now", "type": "pick", "pic": "🚙", "text": "I ___ fixing my toy car.", "options": ["am", "is", "are"], "answer": "am", "who": "I", "subject": "I", "time": "now" },
+    { "id": "p2-chk-02", "unit": "p2-ing-now", "type": "pick", "pic": "🦆", "text": "The ducks ___ swimming.", "options": ["am", "is", "are"], "answer": "are", "who": "many", "subject": "The ducks", "time": "now" },
+    { "id": "p2-chk-03", "unit": "p2-ing-now", "type": "pick", "pic": "🎤", "text": "He ___ singing.", "options": ["am", "is", "are"], "answer": "is", "who": "one", "subject": "He", "time": "now" },
+    { "id": "p2-chk-04", "unit": "p2-ing-before", "type": "pick", "pic": "🏃", "text": "Lily ___ running just now.", "options": ["was", "were"], "answer": "was", "who": "one", "subject": "Lily", "clue": "just now", "time": "before" },
+    { "id": "p2-chk-05", "unit": "p2-ing-before", "type": "pick", "pic": "🍱", "text": "We ___ having lunch a while ago.", "options": ["was", "were"], "answer": "were", "who": "we", "subject": "We", "clue": "a while ago", "time": "before" },
+    { "id": "p2-chk-06", "unit": "p2-ing-before", "type": "pick", "pic": "☎️", "text": "The phone ___ ringing just now.", "options": ["was", "were"], "answer": "was", "who": "one", "subject": "The phone", "clue": "just now", "time": "before" },
+    { "id": "p2-chk-07", "unit": "p2-shall-will", "type": "pick", "pic": "📱", "text": "I ___ call you later.", "options": ["shall", "will"], "answer": "shall", "who": "I", "subject": "I", "clue": "later", "time": "later" },
+    { "id": "p2-chk-08", "unit": "p2-shall-will", "type": "pick", "pic": "📕", "text": "He ___ read you a story.", "options": ["shall", "will"], "answer": "will", "who": "one", "subject": "He", "time": "later" },
+    { "id": "p2-chk-09", "unit": "p2-shall-will", "type": "pick", "pic": "👋", "text": "We ___ meet again soon.", "options": ["shall", "will"], "answer": "shall", "who": "we", "subject": "We", "clue": "soon", "time": "later" },
+    { "id": "p2-chk-10", "unit": "p2-when", "type": "when", "pic": "⚽", "text": "They will play football tomorrow.", "answer": "later", "clue": "tomorrow" }
+  ]
+}
