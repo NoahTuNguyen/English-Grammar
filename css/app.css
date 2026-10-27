@@ -247,6 +247,236 @@ h1, h2, h3 { font-family: var(--font-ui); margin: 0; line-height: 1.1; }
 .obj-dot.level-1 { background: linear-gradient(to top, var(--later-fg) 50%, transparent 50%); }
 .obj-dot.level-2 { background: var(--later-fg); }
 
+/* ---------- Shared: top bar, stars, highlight, big button ---------- */
+
+.bar { display: flex; align-items: center; gap: 12px; }
+.bar-pic { font-size: 40px; line-height: 1; }
+.bar-title { font-size: clamp(26px, 5vw, 38px); font-weight: 800; flex: 1; }
+
+.stars { display: inline-flex; gap: 2px; font-size: 26px; color: var(--line); }
+.star.on { color: #F2A623; }
+.star.on svg { fill: currentColor; }
+
+/* Highlight used for hints and "this part changes". */
+mark.hl { background: var(--hl-bg); color: var(--hl-fg); border-radius: 6px; padding: 0 .12em; }
+
+.big-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 68px;
+  padding: 10px 28px;
+  border-radius: 999px;
+  font-size: 26px;
+  font-weight: 800;
+  box-shadow: var(--shadow);
+  transition: transform .12s ease;
+}
+.big-btn:active { transform: scale(.96); }
+.big-btn.go { background: var(--later-fg); color: var(--surface); align-self: center; }
+.big-btn .icon svg { fill: currentColor; }
+
+/* ---------- Pack ---------- */
+
+.obj-list {
+  list-style: none;
+  margin: 0;
+  padding: 14px 16px;
+  display: grid;
+  gap: 8px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 2px solid var(--line);
+}
+.obj-item { display: flex; align-items: center; gap: 12px; min-height: 40px; font-size: 18px; }
+.obj-item .obj-dot { flex: none; }
+
+.unit-list { display: grid; gap: 12px; }
+@media (min-width: 900px) { .unit-list { grid-template-columns: 1fr 1fr; } }
+
+.unit-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 2px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.unit-pic { font-size: 44px; line-height: 1; }
+.unit-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.unit-title { font-size: 22px; font-weight: 700; line-height: 1.15; }
+.unit-actions { display: flex; gap: 10px; }
+.act-btn {
+  display: grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border-radius: 18px;
+  font-size: 28px;
+  transition: transform .12s ease;
+}
+.act-btn:active { transform: scale(.94); }
+.act-btn.learn { background: var(--before-bg); color: var(--before-fg); }
+.act-btn.practise { width: 68px; background: var(--later-fg); color: var(--surface); }
+.act-btn.practise svg { fill: currentColor; }
+
+/* On narrow phones, the Learn / Practise buttons drop to their own row. */
+@media (max-width: 479px) {
+  .unit-card { grid-template-columns: auto 1fr; }
+  .unit-actions { grid-column: 1 / -1; }
+  .act-btn.learn { flex: 1; }
+  .act-btn.practise { flex: 2; }
+}
+
+.checkup-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 72px;
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  font-size: 26px;
+  font-weight: 800;
+  background: var(--now-bg);
+  color: var(--now-fg);
+  border: 3px solid var(--now-fg);
+}
+.checkup-pic { font-size: 36px; }
+.checkup-btn.locked { background: var(--surface); color: var(--muted); border: 3px dashed var(--line); }
+.checkup-lock { font-size: 28px; }
+
+/* ---------- Learn ---------- */
+
+.rule-line { margin: 0; }
+.rule-card {
+  padding: 16px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 2px solid var(--line);
+}
+.rule-body { display: flex; flex-direction: column; gap: 14px; }
+
+/* Where a tapped example shows up. */
+.example {
+  margin: 0;
+  min-height: 2.6em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  white-space: pre-wrap;
+  text-align: center;
+}
+.tap-hint { font-size: 36px; animation: nudge 1.6s ease-in-out infinite; }
+@keyframes nudge { 50% { transform: translateY(-6px); } }
+
+/* Who grid: four columns; each row has a full-width time label above it. */
+.who-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.who-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  min-height: var(--tap);
+  padding: 6px 2px;
+  border-radius: 16px;
+  text-align: center;
+}
+.who-icon { font-size: 34px; }
+.who-name { font-size: 22px; font-weight: 800; line-height: 1.1; }
+.who-sub { font-size: 13px; color: var(--muted); line-height: 1.15; }
+.who-head.is-hl { background: var(--hl-bg); color: var(--hl-fg); }
+.who-head.is-hl .who-sub { color: inherit; }
+
+.row-label {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  margin-top: 4px;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: 800;
+  border-width: 0 !important;
+  box-shadow: none !important;
+}
+.row-label .icon { font-size: 26px; }
+.cell {
+  min-height: 64px;
+  padding: 6px 4px;
+  border-radius: 16px;
+  font-size: clamp(20px, 4.4vw, 28px);
+  font-weight: 800;
+  line-height: 1.1;
+  transition: transform .12s ease;
+}
+.cell:active { transform: scale(.94); }
+.cell.t-now { box-shadow: none; }
+.cell.is-hl { outline: 4px solid var(--hl-bg); outline-offset: 2px; }
+
+/* Time-line card: three stations with their clue words. */
+.tl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+@media (max-width: 599px) { .tl { grid-template-columns: 1fr; } }
+.tl-station {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 18px;
+}
+.tl-station.t-now { box-shadow: none; }
+.tl-head { display: flex; align-items: center; gap: 8px; min-height: 48px; }
+.tl-head .station-icon { font-size: 34px; }
+.clues { display: flex; flex-wrap: wrap; gap: 8px; }
+.clue-chip {
+  min-height: var(--tap);
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 22px;
+  border: 2px solid var(--line);
+}
+
+/* Pattern and list cards: base word -> past word. */
+.patterns { display: grid; gap: 10px; }
+@media (min-width: 700px) { .patterns { grid-template-columns: 1fr 1fr; } }
+.pattern-row, .pair {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px;
+  border-radius: 18px;
+  background: var(--before-bg);
+  color: var(--before-fg);
+  transition: transform .12s ease;
+}
+.pattern-row:active, .pair:active { transform: scale(.96); }
+.pattern-rule { font-size: 18px; font-weight: 700; }
+.word-change { display: inline-flex; align-items: center; gap: 10px; color: var(--text); font-size: calc(var(--sentence) + 2px); }
+.word-change .arrow { font-size: 22px; color: var(--before-fg); }
+.pairs { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
+
+/* Say it aloud strip. */
+.say-aloud {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  background: var(--have-bg);
+  color: var(--have-fg);
+}
+.say-aloud-pic { font-size: 36px; }
+.say-aloud .sentence { flex: 1; color: var(--text); }
+
 /* ---------- Motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {

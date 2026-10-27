@@ -6,9 +6,13 @@ import * as speech from './speech.js';
 import * as store from './store.js';
 import { h, mimi, backButton } from './ui.js';
 import * as home from './views/home.js';
+import * as pack from './views/pack.js';
+import * as learn from './views/learn.js';
 
 const views = {
-  '': home,
+  '': home,      // #/
+  pack,          // #/pack/<packId>
+  learn,         // #/learn/<packId>/<unitId>
 };
 
 const app = document.getElementById('app');

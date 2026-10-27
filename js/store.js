@@ -8,7 +8,8 @@ const MAX_ATTEMPTS = 500;
 
 const defaults = () => ({
   version: VERSION,
-  settings: { readAloud: true, rate: 0.85, name: '' },
+  // unlockCheckup: parent override so Check-up opens before every unit is practised.
+  settings: { readAloud: true, rate: 0.85, name: '', unlockCheckup: false },
   units: {},      // unitId -> { bestStars, rounds }
   attempts: [],   // { item, correct, firstTry, mode, t, chose? }
   objectives: {}, // reserved (accuracy is derived from attempts)

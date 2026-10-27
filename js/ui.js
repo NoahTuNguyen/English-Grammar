@@ -62,6 +62,38 @@ export function sayable(el, text, { noIcon = false } = {}) {
   return el;
 }
 
+// Wrap parts of a sentence in <mark>, e.g.
+// marked('My two cousins ___ Lily.', [{ text: 'My two cousins', cls: 'hl' }]).
+// Matches whole words only, case-insensitive, first occurrence of each.
+export function marked(sentence, needles = []) {
+  const found = [];
+  for (const n of needles) {
+    if (!n?.text) continue;
+    const esc = n.text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const m = new RegExp(`(^|[^A-Za-z])(${esc})(?![A-Za-z])`, 'i').exec(sentence);
+    if (m) found.push({ start: m.index + m[1].length, end: m.index + m[1].length + m[2].length, cls: n.cls || 'hl' });
+  }
+  found.sort((a, b) => a.start - b.start);
+  const out = [];
+  let pos = 0;
+  for (const f of found) {
+    if (f.start < pos) continue; // skip overlaps
+    out.push(sentence.slice(pos, f.start), h('mark', { class: f.cls }, sentence.slice(f.start, f.end)));
+    pos = f.end;
+  }
+  out.push(sentence.slice(pos));
+  return out.filter((x) => x !== '');
+}
+
+// 0–3 stars. Filled stars glow; empty ones are outlines.
+export function stars(n, max = 3) {
+  return h(
+    'span',
+    { class: 'stars', 'aria-label': `${n} of ${max} stars` },
+    Array.from({ length: max }, (_, i) => icon('star', i < n ? 'star on' : 'star')),
+  );
+}
+
 // A round "back" button that goes to the given hash.
 export function backButton(href, label = 'Back') {
   return h('a', { class: 'round-btn back', href, 'aria-label': label }, icon('back'));
