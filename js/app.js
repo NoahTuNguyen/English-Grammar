@@ -8,11 +8,13 @@ import { h, mimi, backButton } from './ui.js';
 import * as home from './views/home.js';
 import * as pack from './views/pack.js';
 import * as learn from './views/learn.js';
+import * as practise from './views/practise.js';
 
 const views = {
   '': home,      // #/
   pack,          // #/pack/<packId>
-  learn,         // #/learn/<packId>/<unitId>
+  learn,         // #/learn/<packId>/<unitId>[/first]
+  practise,      // #/practise/<packId>/<unitId>
 };
 
 const app = document.getElementById('app');

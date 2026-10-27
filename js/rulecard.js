@@ -56,7 +56,15 @@ function whoGrid(rule, { row, who } = {}) {
     );
     const cells = WHO_ORDER.map((k) => {
       const c = r.cells[k];
-      const b = h('button', { class: `cell t-${r.time}${who === k ? ' is-hl' : ''}`, type: 'button' }, c.w);
+      // "were …ing" is shown as "were" with a small "…ing" tag under it,
+      // so it never wraps in a narrow cell.
+      const [word, ing] = c.w.split(/\s+(?=…)/);
+      const b = h(
+        'button',
+        { class: `cell t-${r.time}${who === k ? ' is-hl' : ''}`, type: 'button' },
+        h('span', { class: 'cell-word' }, word),
+        ing && h('span', { class: 'cell-ing' }, ing),
+      );
       b.addEventListener('click', () => {
         // "am …ing" -> highlight "am" in the example.
         showExample(example, c.ex, c.w.split(/\s/)[0]);

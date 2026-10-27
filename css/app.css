@@ -276,6 +276,9 @@ mark.hl { background: var(--hl-bg); color: var(--hl-fg); border-radius: 6px; pad
 .big-btn:active { transform: scale(.96); }
 .big-btn.go { background: var(--later-fg); color: var(--surface); align-self: center; }
 .big-btn .icon svg { fill: currentColor; }
+/* First visit to a unit: gently lead on to practise. */
+.big-btn.lead-on { animation: lead-on 1.4s ease-in-out 1s infinite; }
+@keyframes lead-on { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.07); } }
 
 /* ---------- Pack ---------- */
 
@@ -417,6 +420,15 @@ mark.hl { background: var(--hl-bg); color: var(--hl-fg); border-radius: 6px; pad
   transition: transform .12s ease;
 }
 .cell:active { transform: scale(.94); }
+.cell { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+.cell-word, .cell-ing { white-space: nowrap; }
+.cell-ing {
+  font-size: 15px;
+  padding: 0 8px;
+  border-radius: 999px;
+  border: 2px solid currentColor;
+  opacity: .85;
+}
 .cell.t-now { box-shadow: none; }
 .cell.is-hl { outline: 4px solid var(--hl-bg); outline-offset: 2px; }
 
@@ -476,6 +488,193 @@ mark.hl { background: var(--hl-bg); color: var(--hl-fg); border-radius: 6px; pad
 }
 .say-aloud-pic { font-size: 36px; }
 .say-aloud .sentence { flex: 1; color: var(--text); }
+
+/* ---------- Practise ---------- */
+
+button { touch-action: manipulation; } /* no double-tap zoom on iOS */
+
+.practise-bar { gap: 16px; }
+.dots { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; }
+.dot { width: 14px; height: 14px; border-radius: 50%; background: var(--line); }
+.dot.done { background: var(--later-fg); }
+.dot.current { background: var(--now-fg); box-shadow: 0 0 0 4px var(--now-bg); }
+
+.question {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 18px;
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+}
+.q-pic { font-size: clamp(72px, 16vw, 112px); line-height: 1.1; align-self: center; }
+
+.q-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 2px solid var(--line);
+}
+.q-sentence { margin: 0; text-align: center; }
+.q-line .speaker { flex: none; }
+
+/* The blank: an empty box that fills in when solved. */
+.blank {
+  display: inline-block;
+  min-width: 3.2em;
+  margin: 0 .15em;
+  border-bottom: 4px dashed var(--muted);
+  text-align: center;
+}
+.blank.filled {
+  border-bottom: 4px solid var(--later-fg);
+  background: var(--later-bg);
+  color: var(--later-fg);
+  border-radius: 8px 8px 0 0;
+  padding: 0 .2em;
+  animation: pop .4s ease;
+}
+mark.glow { animation: glow 1s ease 2; }
+
+/* Options: a big choice button plus a small "hear it" button. */
+.opts { display: grid; gap: 12px; }
+@media (min-width: 600px) { .opts { grid-template-columns: repeat(2, 1fr); } .opts-when { grid-template-columns: repeat(3, 1fr); } }
+.opt-wrap { display: flex; align-items: center; gap: 8px; }
+.opt {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 76px;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 3px solid var(--line);
+  box-shadow: var(--shadow);
+  font-family: var(--font-read);
+  font-size: calc(var(--sentence) + 4px);
+  transition: transform .12s ease, opacity .4s ease;
+}
+.opt:active { transform: scale(.96); }
+.opt-icon { font-size: 34px; }
+.opts-when .opt { font-family: var(--font-ui); font-weight: 800; }
+/* Station colours for the Now / Before / Later buttons. */
+.opt.t-before { background: var(--before-bg); color: var(--before-fg); border: 3px solid transparent; }
+.opt.t-now    { background: var(--now-bg);    color: var(--now-fg);    border: 3px solid var(--now-fg); }
+.opt.t-later  { background: var(--later-bg);  color: var(--later-fg);  border: 3px dashed var(--later-fg); }
+.opt.correct { background: var(--later-bg); color: var(--later-fg); border: 3px solid var(--later-fg); filter: none; opacity: 1; animation: pop .4s ease; }
+.opt.faded { opacity: .3; box-shadow: none; }
+.opt-say { width: 48px; height: var(--tap); border-radius: 16px; font-size: 22px; color: var(--muted); }
+.no-speech .opt-say { display: none; }
+
+/* Wobble for a slip. Never red. */
+.wobble { animation: wobble .45s ease; }
+@keyframes wobble {
+  20% { transform: translateX(-8px) rotate(-3deg); }
+  40% { transform: translateX(7px) rotate(2deg); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(3px); }
+}
+@keyframes pop { 0% { transform: scale(.8); } 60% { transform: scale(1.08); } 100% { transform: scale(1); } }
+@keyframes glow { 50% { box-shadow: 0 0 0 6px var(--hl-bg); } }
+
+/* Hint line (step 1) and compact rule (step 2). */
+.hint-box:empty, .hint-rule:empty, .next-box:empty { display: none; }
+.hint-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  background: var(--now-bg);
+  color: var(--text);
+  border: 3px dashed var(--hl-bg);
+  text-align: left;
+  font-size: calc(var(--sentence) - 2px);
+  animation: pop .35s ease;
+}
+.hint-who { font-size: 40px; color: var(--now-fg); }
+.rule-card.compact { padding: 10px; animation: pop .35s ease; }
+.rule-card.compact .example { display: none; }
+
+.next-box { display: flex; justify-content: center; }
+.big-btn.next { background: var(--before-fg); color: var(--surface); min-width: 200px; }
+.big-btn.next .icon svg { fill: none; }
+
+/* Star that pops after a right answer. */
+.star-pop {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  font-size: 120px;
+  pointer-events: none;
+  animation: star-pop 1.1s ease forwards;
+}
+@keyframes star-pop {
+  0% { transform: translate(-50%, 20px) scale(.2); opacity: 0; }
+  35% { transform: translate(-50%, 0) scale(1.15); opacity: 1; }
+  70% { transform: translate(-50%, -10px) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, -60px) scale(.8); opacity: 0; }
+}
+
+/* Spell and build tiles. */
+.spell-base { font-weight: 700; }
+.q-line .arrow { font-size: 26px; color: var(--muted); }
+.spell-moon { font-size: 30px; color: var(--before-fg); }
+.slots { display: inline-flex; gap: 4px; flex-wrap: wrap; }
+.slot {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.15em;
+  border-bottom: 4px solid var(--muted);
+}
+.slot.filled { border-bottom-color: var(--later-fg); color: var(--later-fg); animation: pop .3s ease; }
+.q-spell .q-sentence { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; }
+.q-line.solved { border-color: var(--later-fg); background: var(--later-bg); }
+
+.tiles { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.tile {
+  min-width: 60px;
+  min-height: 64px;
+  padding: 4px 12px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 3px solid var(--line);
+  box-shadow: var(--shadow);
+  font-family: var(--font-read);
+  font-size: 32px;
+  transition: transform .12s ease, opacity .3s ease;
+}
+.tile:active { transform: scale(.94); }
+.tile.word { font-size: var(--sentence); }
+.tile.used { opacity: 0; pointer-events: none; }
+.tile.glow { border-color: var(--hl-bg); animation: glow 1s ease infinite; }
+
+.build-line { justify-content: space-between; }
+.built { margin: 0; flex: 1; min-height: 1.4em; text-align: left; }
+.built-word { display: inline-block; animation: pop .25s ease; }
+.built-gap { display: inline-block; min-width: 3em; border-bottom: 4px dashed var(--muted); }
+
+/* ---------- Done ---------- */
+
+.done { gap: 18px; }
+.done-stars { font-size: clamp(72px, 18vw, 110px); gap: 8px; }
+.done-stars .star.on { animation: pop .5s ease backwards; }
+.done-stars .star:nth-child(2) { animation-delay: .25s; }
+.done-stars .star:nth-child(3) { animation-delay: .5s; }
+.done-cheer { font-size: 30px; font-weight: 800; }
+.done-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 8px; }
+.big-btn.again { background: var(--later-fg); color: var(--surface); }
+.big-btn.back-to-pack { background: var(--surface); color: var(--text); border: 2px solid var(--line); }
+.big-btn.back-to-pack .icon svg { fill: none; }
 
 /* ---------- Motion ---------- */
 

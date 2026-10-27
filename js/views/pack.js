@@ -20,8 +20,10 @@ function objectiveList(pack) {
 }
 
 function unitCard(pack, unit) {
-  const { bestStars } = store.unitProgress(unit.id);
+  const { bestStars, learned } = store.unitProgress(unit.id);
   const title = sayable(h('span', { class: 'unit-title' }, unit.title), unit.title);
+  // First time in a unit, Practise shows the Learn card first, then goes on to practise.
+  const practiseHref = learned ? `#/practise/${pack.id}/${unit.id}` : `#/learn/${pack.id}/${unit.id}/first`;
   return h(
     'div',
     { class: 'unit-card' },
@@ -31,7 +33,7 @@ function unitCard(pack, unit) {
       'div',
       { class: 'unit-actions' },
       h('a', { class: 'act-btn learn', href: `#/learn/${pack.id}/${unit.id}`, 'aria-label': 'Learn' }, icon('book')),
-      h('a', { class: 'act-btn practise', href: `#/practise/${pack.id}/${unit.id}`, 'aria-label': 'Practise' }, icon('play')),
+      h('a', { class: 'act-btn practise', href: practiseHref, 'aria-label': 'Practise' }, icon('play')),
     ),
   );
 }

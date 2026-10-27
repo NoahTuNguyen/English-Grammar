@@ -10,7 +10,7 @@ const defaults = () => ({
   version: VERSION,
   // unlockCheckup: parent override so Check-up opens before every unit is practised.
   settings: { readAloud: true, rate: 0.85, name: '', unlockCheckup: false },
-  units: {},      // unitId -> { bestStars, rounds }
+  units: {},      // unitId -> { bestStars, rounds, learned }
   attempts: [],   // { item, correct, firstTry, mode, t, chose? }
   objectives: {}, // reserved (accuracy is derived from attempts)
   together: {},   // say-item id -> timestamp when "She said it" was ticked
@@ -72,14 +72,23 @@ export function setSetting(key, value) {
 
 // ---- Units (stars per unit) ----
 
+// learned: the Learn card has been seen at least once. Until then, the
+// Practise button shows Learn first.
 export function unitProgress(unitId) {
   const u = state.units[unitId];
-  return { bestStars: u?.bestStars || 0, rounds: u?.rounds || 0 };
+  return { bestStars: u?.bestStars || 0, rounds: u?.rounds || 0, learned: !!u?.learned };
 }
 
 export function recordRound(unitId, stars) {
   const u = unitProgress(unitId);
-  state.units[unitId] = { bestStars: Math.max(u.bestStars, stars), rounds: u.rounds + 1 };
+  state.units[unitId] = { ...u, bestStars: Math.max(u.bestStars, stars), rounds: u.rounds + 1 };
+  save();
+}
+
+export function markLearned(unitId) {
+  const u = unitProgress(unitId);
+  if (u.learned) return;
+  state.units[unitId] = { ...u, learned: true };
   save();
 }
 
