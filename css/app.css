@@ -676,6 +676,111 @@ mark.glow { animation: glow 1s ease 2; }
 .big-btn.back-to-pack { background: var(--surface); color: var(--text); border: 2px solid var(--line); }
 .big-btn.back-to-pack .icon svg { fill: none; }
 
+.checkup-btn .stars { font-size: 24px; color: var(--now-fg); opacity: .5; }
+.checkup-btn .star.on { opacity: 1; }
+
+/* ---------- Grown-ups (adult page: normal text) ---------- */
+
+.grownups { font-family: system-ui, sans-serif; font-size: 16px; gap: 16px; }
+.grownups h2 { font-family: var(--font-ui); font-size: 26px; }
+.grownups h3 { font-family: var(--font-ui); font-size: 20px; margin-top: 4px; }
+.muted { color: var(--muted); margin: 0; }
+.gu-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 2px solid var(--line);
+}
+.gu-pack { display: flex; flex-direction: column; gap: 10px; padding-top: 8px; border-top: 1px solid var(--line); }
+
+.gu-objs { display: grid; gap: 10px; }
+.gu-obj { display: grid; grid-template-columns: 1fr minmax(80px, 160px) 92px; align-items: center; gap: 10px; }
+@media (max-width: 479px) {
+  .gu-obj { grid-template-columns: 1fr 84px; }
+  .gu-obj-text { grid-column: 1 / -1; }
+}
+.gu-bar { height: 12px; border-radius: 6px; background: var(--line); overflow: hidden; }
+.gu-bar-fill { display: block; height: 100%; background: var(--later-fg); border-radius: 6px; }
+.gu-bar-fill.low { background: var(--now-fg); }
+.gu-num { font-variant-numeric: tabular-nums; color: var(--muted); text-align: right; font-size: 14px; }
+
+.tag { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; font-size: 12px; background: var(--before-bg); color: var(--before-fg); white-space: nowrap; }
+.tag.needs { background: var(--now-bg); color: var(--now-fg); }
+
+.gu-checkup p { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.gu-checkup .stars { font-size: 18px; }
+.gu-list { margin: 0; padding-left: 18px; display: grid; gap: 8px; }
+.gu-sentence { font-family: var(--font-read); font-size: 18px; }
+.gu-note { display: block; color: var(--muted); font-size: 14px; }
+
+.gu-tasks { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.gu-task { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; }
+@media (max-width: 479px) {
+  .gu-task { grid-template-columns: auto 1fr; }
+  .gu-said { grid-column: 1 / -1; }
+}
+.gu-task-pic { font-size: 30px; }
+.gu-task-text { display: flex; flex-direction: column; gap: 2px; }
+.gu-prompt { font-family: var(--font-read); font-size: 18px; }
+.gu-example { color: var(--muted); font-size: 15px; }
+.gu-said {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 48px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 2px solid var(--line);
+  font-family: var(--font-ui);
+  font-weight: 700;
+  color: var(--muted);
+}
+.gu-said[aria-pressed="true"] { background: var(--later-bg); color: var(--later-fg); border-color: var(--later-fg); }
+
+.gu-settings { display: grid; gap: 4px; }
+.gu-setting {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-height: 56px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
+}
+.gu-setting:last-child { border-bottom: 0; }
+.gu-setting input[type="checkbox"] { width: 28px; height: 28px; accent-color: var(--later-fg); }
+.gu-setting input[type="text"] {
+  min-height: 44px;
+  padding: 6px 12px;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  -webkit-user-select: text;
+  user-select: text;
+}
+.gu-seg { display: inline-flex; border: 2px solid var(--line); border-radius: 999px; overflow: hidden; }
+.gu-seg button { min-height: 44px; padding: 6px 18px; font-family: var(--font-ui); font-weight: 700; }
+.gu-seg button[aria-checked="true"] { background: var(--before-fg); color: var(--surface); }
+.gu-small, .gu-reset {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 2px solid var(--line);
+  font-family: var(--font-ui);
+  font-weight: 700;
+}
+.gu-reset { color: var(--have-fg); border-color: var(--have-fg); }
+
 /* ---------- Motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {

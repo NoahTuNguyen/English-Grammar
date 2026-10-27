@@ -61,6 +61,13 @@ export function unlock() {
   synth.speak(u);
 }
 
+// Name of the voice in use, for the Grown-ups page.
+export function voiceName() {
+  if (!available) return '';
+  if (!voice) pickVoice();
+  return voice ? `${voice.name} (${voice.lang})` : 'Default voice';
+}
+
 export function setRate(r) {
   rate = r;
 }

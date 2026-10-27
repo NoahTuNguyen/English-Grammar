@@ -14,7 +14,9 @@ const defaults = () => ({
   attempts: [],   // { item, correct, firstTry, mode, t, chose? }
   objectives: {}, // reserved (accuracy is derived from attempts)
   together: {},   // say-item id -> timestamp when "She said it" was ticked
+  checkups: {},   // packId -> last few check-ups: [{ t, stars, total, correct, items: [{ item, ok, chose? }] }]
 });
+const MAX_CHECKUPS = 5;
 
 const isObj = (v) => v && typeof v === 'object' && !Array.isArray(v);
 
@@ -36,6 +38,7 @@ function sanitise(raw) {
     attempts: Array.isArray(data.attempts) ? data.attempts.filter(isObj) : d.attempts,
     objectives: isObj(data.objectives) ? data.objectives : d.objectives,
     together: isObj(data.together) ? data.together : d.together,
+    checkups: isObj(data.checkups) ? data.checkups : d.checkups,
   };
 }
 
@@ -113,6 +116,18 @@ export function togetherDone(id) {
 export function markTogether(id, done = true) {
   if (done) state.together[id] = now();
   else delete state.together[id];
+  save();
+}
+
+// ---- Check-ups (detailed results for the Grown-ups page) ----
+
+export function checkups(packId) {
+  const list = state.checkups[packId];
+  return Array.isArray(list) ? list : [];
+}
+
+export function recordCheckup(packId, result) {
+  state.checkups[packId] = [...checkups(packId), { t: now(), ...result }].slice(-MAX_CHECKUPS);
   save();
 }
 

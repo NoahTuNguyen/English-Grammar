@@ -44,7 +44,14 @@ function checkupButton(pack) {
   if (!pack.checkup?.length) return null;
   const ready = store.settings().unlockCheckup || pack.units.every((u) => store.unitProgress(u.id).rounds > 0);
   if (ready) {
-    return h('a', { class: 'checkup-btn', href: `#/checkup/${pack.id}` }, h('span', { class: 'checkup-pic', 'aria-hidden': 'true' }, '🏆'), h('span', {}, 'Check-up'));
+    const best = Math.max(0, ...store.checkups(pack.id).map((c) => c.stars || 0));
+    return h(
+      'a',
+      { class: 'checkup-btn', href: `#/checkup/${pack.id}` },
+      h('span', { class: 'checkup-pic', 'aria-hidden': 'true' }, '🏆'),
+      h('span', {}, 'Check-up'),
+      best > 0 && stars(best),
+    );
   }
   const btn = h(
     'button',

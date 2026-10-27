@@ -9,12 +9,16 @@ import * as home from './views/home.js';
 import * as pack from './views/pack.js';
 import * as learn from './views/learn.js';
 import * as practise from './views/practise.js';
+import * as checkup from './views/checkup.js';
+import * as grownups from './views/grownups.js';
 
 const views = {
   '': home,      // #/
   pack,          // #/pack/<packId>
   learn,         // #/learn/<packId>/<unitId>[/first]
   practise,      // #/practise/<packId>/<unitId>
+  checkup,       // #/checkup/<packId>
+  grownups,      // #/grownups (press and hold on Home)
 };
 
 const app = document.getElementById('app');

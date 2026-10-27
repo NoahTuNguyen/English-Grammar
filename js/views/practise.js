@@ -89,7 +89,7 @@ function askQuestion(ctx, item) {
       wrong++;
       if (chose == null) chose = choice;
       if (!hints) {
-        if (kind.endsOnWrong) finish({ revealed: false, correct: false });
+        finish({ revealed: false, correct: false }); // check-up: any slip moves on
         return 0;
       }
       if (kind.noLadder) {
@@ -132,7 +132,7 @@ function askQuestion(ctx, item) {
   function finish({ revealed, correct }) {
     over = true;
     kind.solved({ revealed, correct });
-    const first = round.finish(item, { wrongTries: wrong, revealed });
+    const first = round.finish(item, { wrongTries: wrong, revealed, chose });
     if (first) store.recordAttempt({ item: item.id, correct, firstTry: wrong === 0, mode: ctx.mode, chose });
     // In the check-up a wrong answer just moves on, without showing the answer.
     if (!correct && !hints) {
@@ -228,7 +228,6 @@ const BUILDERS = {
     return {
       body: [line, h('div', { class: 'opts' }, opts.map((o) => o.wrap))],
       line,
-      endsOnWrong: true,
       highlight(m) {
         marks = m;
         text.replaceChildren(...blankSentence(item, { marks }));
@@ -265,7 +264,6 @@ const BUILDERS = {
     return {
       body: [line, h('div', { class: 'opts opts-when' }, opts.map((o) => o.wrap))],
       line,
-      endsOnWrong: true,
       highlight(marks) {
         text.replaceChildren(...marked(item.text, marks));
       },

@@ -37,6 +37,7 @@ export class Round {
     this.pos = 0;
     this.requeue = requeue;
     this.firstTry = new Map(); // item id -> right on the very first try?
+    this.chose = new Map();    // item id -> first wrong choice (for the parent page)
   }
 
   get current() {
@@ -49,10 +50,11 @@ export class Round {
 
   // Finish the current item. Returns true if this was its first showing
   // (only first showings count for stars and are saved as attempts).
-  finish(item, { wrongTries, revealed }) {
+  finish(item, { wrongTries, revealed, chose = null }) {
     const first = !this.firstTry.has(item.id);
     if (first) {
       this.firstTry.set(item.id, wrongTries === 0);
+      if (chose != null) this.chose.set(item.id, chose);
       if (this.requeue && revealed) this.queue.push(item);
     }
     this.pos++;
@@ -65,6 +67,20 @@ export class Round {
 
   stars() {
     return starsFor(this.firstTryCorrect, this.total);
+  }
+
+  // Per-item results: [{ item, ok, chose }]
+  results() {
+    return [...this.firstTry].map(([item, ok]) => ({ item, ok, ...(this.chose.has(item) && { chose: this.chose.get(item) }) }));
+  }
+}
+
+// How an item reads on the parent page, e.g. "Yesterday I ___ (go) to the park."
+export function summaryText(item) {
+  switch (item.type) {
+    case 'pick': return displayText(item);
+    case 'spell': return `${item.base} → ?`;
+    default: return item.text || item.prompt || '';
   }
 }
 
